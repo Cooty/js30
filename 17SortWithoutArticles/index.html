@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Without Articles</title>
+</head>
+<body>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: url("bg.jpg");
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #bands {
+      list-style: inside square;
+      font-size: 20px;
+      background: white;
+      width: 500px;
+      margin: auto;
+      padding: 0;
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+    #bands li {
+      border-bottom: 1px solid #efefef;
+      padding: 20px;
+    }
+    #bands li:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      color: #ffc600;
+      text-decoration: none;
+    }
+
+  </style>
+
+  <ul id="bands"></ul>
+
+<script>
+  const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+  const articles = ['The', 'A', 'An'];
+  const bandList = document.getElementById('bands');
+
+  const bandsWithSeperatedArticles = bands.map(band => {
+    let bandName = {};
+
+    articles.forEach(article => {
+      if(band.startsWith(article + ' ')) {
+        bandName.article = article;
+        bandName.name = band.split(article + ' ')[1];
+      }
+      if(!bandName.article) {
+          bandName.name = band;
+      }
+    });
+
+    return bandName;
+
+  });
+
+  const sortedByTrueName = bandsWithSeperatedArticles.sort(function(a, b) {
+    const nameA = a.name;
+    const nameB = b.name;
+
+    if(nameA < nameB) {
+      return -1;
+    }
+    
+    if(nameA > nameB) {
+      return 1;
+    }
+
+    return 0;
+
+  });
+
+  function renderList(items) {
+    let html = ``;
+
+    items.forEach(item => {
+      const displayedName = item.article ? item.article + ' ' + item.name : item.name;
+
+      console.log(displayedName);
+
+      html += `<li>${displayedName}</li>`;
+    });
+
+    console.log(html);
+
+    bandList.innerHTML = html;
+
+  }
+
+  console.log(sortedByTrueName);
+
+  renderList(sortedByTrueName);
+
+</script>
+
+</body>
+</html>

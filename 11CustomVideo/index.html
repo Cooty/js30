@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Video Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <div class="player">
+     <video class="player__video viewer"
+            src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"
+            poster="poster.jpg"
+            allowfullscreen></video>
+
+     <div class="player__controls">
+       <div class="progress">
+        <div class="progress__filled"></div>
+       </div>
+       <button class="player__button toggle" title="Toggle Play">►</button>
+       <input type="range" name="volume" class="player__slider" min=0 max="1" step="0.05" value="1">
+       <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1">
+       <button data-skip="-10" class="player__button">« 10s</button>
+       <button data-skip="25" class="player__button">25s »</button>
+       <button class="player__button fullscreen">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="full-screen-icon">
+          <title>Fullscreen</title>
+          <polygon class="cls-1" points="12 0 12 2 18 2 18 8 20 8 20 0 12 0"/>
+          <polygon class="cls-1" points="2 2 8 2 8 0 0 0 0 8 2 8 2 2"/>
+          <polygon class="cls-1" points="2 18 2 12 0 12 0 20 8 20 8 18 2 18"/>
+          <polygon class="cls-1" points="18 18 12 18 12 20 20 20 20 12 18 12 18 18"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="exit-full-screen-icon">
+          <title>back to normal</title>
+          <polygon points="20 8 20 6 14 6 14 0 12 0 12 8 20 8"/>
+          <polygon points="6 6 0 6 0 8 8 8 8 0 6 0 6 6"/>
+          <polygon points="6 14 6 20 8 20 8 12 0 12 0 14 6 14"/>
+          <polygon points="14 14 20 14 20 12 12 12 12 20 14 20 14 14"/>
+        </svg>
+       </button>
+     </div>
+   </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
